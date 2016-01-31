@@ -4,12 +4,10 @@ import java.util.Map;
 
 import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
-import backtype.storm.topology.IRichBolt;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Tuple;
 
-//public class HelloWorldTwoBolt implements IRichBolt {
 public class HelloWorldTwoBolt extends BaseRichBolt {
 	
 	private static final long serialVersionUID = -7269157525422828847L;
