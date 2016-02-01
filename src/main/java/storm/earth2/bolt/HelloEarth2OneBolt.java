@@ -1,4 +1,4 @@
-package storm.helloworld.bolt;
+package storm.earth2.bolt;
 
 import java.util.Map;
 

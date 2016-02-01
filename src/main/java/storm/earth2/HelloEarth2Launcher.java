@@ -1,11 +1,11 @@
-package storm.helloworld;
+package storm.earth2;
 
 import backtype.storm.Config;
 import backtype.storm.StormSubmitter;
 import backtype.storm.topology.TopologyBuilder;
-import storm.helloworld.bolt.HelloEarth2OneBolt;
-import storm.helloworld.bolt.HelloEarth2TwoBolt;
-import storm.helloworld.spout.HelloEarth2Spout;
+import storm.earth2.bolt.HelloEarth2OneBolt;
+import storm.earth2.bolt.HelloEarth2TwoBolt;
+import storm.earth2.spout.HelloEarth2Spout;
 
 public class HelloEarth2Launcher {
 	

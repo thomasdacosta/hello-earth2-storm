@@ -1,4 +1,4 @@
-package storm.helloworld.bolt;
+package storm.earth2.bolt;
 
 import java.util.Map;
 
@@ -7,7 +7,7 @@ import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseRichBolt;
 import backtype.storm.tuple.Tuple;
-import storm.helloworld.EchoFile;
+import storm.earth2.EchoFile;
 
 public class HelloEarth2TwoBolt extends BaseRichBolt {
 	

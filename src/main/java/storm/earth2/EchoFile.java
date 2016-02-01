@@ -1,4 +1,4 @@
-package storm.helloworld;
+package storm.earth2;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;

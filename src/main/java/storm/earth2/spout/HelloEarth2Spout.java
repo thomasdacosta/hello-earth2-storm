@@ -1,4 +1,4 @@
-package storm.helloworld.spout;
+package storm.earth2.spout;
 
 import java.io.IOException;
 import java.util.Map;
@@ -9,7 +9,7 @@ import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseRichSpout;
 import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Values;
-import storm.helloworld.EchoClient;
+import storm.earth2.EchoClient;
 
 public class HelloEarth2Spout extends BaseRichSpout {
 
