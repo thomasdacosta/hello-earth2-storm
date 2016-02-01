@@ -11,7 +11,7 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Values;
 import storm.helloworld.EchoClient;
 
-public class HelloWorldSpout extends BaseRichSpout {
+public class HelloEarth2Spout extends BaseRichSpout {
 
 	private static final long serialVersionUID = 1L;
 	private SpoutOutputCollector collector;
@@ -24,62 +24,57 @@ public class HelloWorldSpout extends BaseRichSpout {
 
 	@Override
 	public void close() {
-		System.out.println("-------- >close method");
 		try {
 			echoClient.close();
-		} catch (IOException e) {
-			e.printStackTrace(System.out);
+		} catch (IOException ex) {
+			ex.printStackTrace(System.out);
 		}
 	}
 
 	@Override
 	public void activate() {
-		System.out.println("-------- >activate method");
 		echoClient = new EchoClient();
 		try {
 			echoClient.start();
-		} catch (IOException e) {
-			e.printStackTrace(System.out);
+		} catch (IOException ex) {
+			ex.printStackTrace(System.out);
 		}
 	}
 
 	@Override
 	public void deactivate() {
-		System.out.println("-------- >deactivate method");
 	}
 
 	@Override
 	public void nextTuple() {
 		String value = null;
+		String id = System.currentTimeMillis() + "";
 		try {
 			echoClient.read();
 			value = echoClient.getValue();
 		} catch (IOException e) {
 			e.printStackTrace(System.out);
 		}
-		this.collector.emit(new Values(value));		
+		this.collector.emit(new Values(value), id);		
 	}
 	
 	@Override
 	public void ack(Object msgId) {
-		System.out.println("-------- >ack method");
+		System.out.println("-------------> ack: " + msgId);
 	}
 	
 	@Override
 	public void fail(Object msgId) {
-		System.out.println("-------- >fail method");
 	}
 	
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		System.out.println("-------- >fields method");
-		declarer.declare(new Fields("field-dc-comics"));
+		declarer.declare(new Fields("dccomics"));
 	}
 	
 	@Override
 	public Map<String, Object> getComponentConfiguration() {
 		return null;
 	}
-
 
 }

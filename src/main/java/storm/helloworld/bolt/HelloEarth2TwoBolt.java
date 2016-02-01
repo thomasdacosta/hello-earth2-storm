@@ -6,13 +6,12 @@ import backtype.storm.task.OutputCollector;
 import backtype.storm.task.TopologyContext;
 import backtype.storm.topology.OutputFieldsDeclarer;
 import backtype.storm.topology.base.BaseRichBolt;
-import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
-import backtype.storm.tuple.Values;
+import storm.helloworld.EchoFile;
 
-public class HelloWorldOneBolt extends BaseRichBolt {
-
-	private static final long serialVersionUID = 3190593874345741440L;
+public class HelloEarth2TwoBolt extends BaseRichBolt {
+	
+	private static final long serialVersionUID = -7269157525422828847L;
 	private OutputCollector collector;
 
 	@SuppressWarnings("rawtypes")
@@ -24,23 +23,20 @@ public class HelloWorldOneBolt extends BaseRichBolt {
 	@Override
 	public void execute(Tuple tuple) {
 		String value = tuple.getString(0);
-		value = value.replaceAll("\n", "");
-		value = value.replaceAll("\r", "");
-		value += " You are Batman";
-		System.out.println("-------- > BOLT1:" + value);
-		collector.emit(new Values(value));
+		String fileName = System.currentTimeMillis() + ".txt"; 
+		value += "Jay Garrick.";
+
+		EchoFile.file(fileName, value);
+		System.out.println("-------------> arquivo criado: " + fileName);
 		collector.ack(tuple);
 	}
 
 	@Override
 	public void cleanup() {
-		System.out.println("-------- >cleanup method");
 	}
 
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer) {
-		System.out.println("-------- >declareOutputFields method");
-		declarer.declare(new Fields("field-dc-comics"));
 	}
 
 	@Override
