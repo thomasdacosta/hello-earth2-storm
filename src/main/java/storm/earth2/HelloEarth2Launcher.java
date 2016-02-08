@@ -1,7 +1,7 @@
 package storm.earth2;
 
 import backtype.storm.Config;
-import backtype.storm.StormSubmitter;
+import backtype.storm.LocalCluster;
 import backtype.storm.topology.TopologyBuilder;
 import storm.earth2.bolt.HelloEarth2OneBolt;
 import storm.earth2.bolt.HelloEarth2TwoBolt;
@@ -21,10 +21,10 @@ public class HelloEarth2Launcher {
 		builder.setBolt("HelloEarth2TwoBolt", new HelloEarth2TwoBolt())
 			.shuffleGrouping("HelloEarth2OneBolt");
 		
-//		LocalCluster cluster = new LocalCluster();
-//		cluster.submitTopology("HelloEarth2", config, builder.createTopology());
+		LocalCluster cluster = new LocalCluster();
+		cluster.submitTopology("HelloEarth2", config, builder.createTopology());
 		
-		StormSubmitter.submitTopology("HelloEarth2", config, builder.createTopology());
+//		StormSubmitter.submitTopology("HelloEarth2", config, builder.createTopology());
 	}
 
 }
